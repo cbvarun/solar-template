@@ -20,7 +20,14 @@ export const metadata: Metadata = {
   title: { default: t(siteConfig.seo.defaultTitle), template: t(siteConfig.seo.titleTemplate) },
   description: t(siteConfig.company.description),
   applicationName: siteConfig.company.name,
-  icons: { icon: siteConfig.company.favicon },
+  icons: {
+    icon: [
+      { url: siteConfig.company.favicon, sizes: "any" },
+      { url: "/brand/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/brand/apple-touch-icon.png",
+  },
   formatDetection: { telephone: false },
 };
 
