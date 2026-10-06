@@ -68,4 +68,5 @@ export const defaultFeatures: SiteConfigInput["features"] = {
   projects: true,
   serviceAreaPages: true,
   testimonials: true,
+  trustStats: true,
 };

@@ -227,6 +227,7 @@ export const siteConfigSchema = z.object({
     projects: z.boolean(),
     serviceAreaPages: z.boolean(),
     testimonials: z.boolean(),
+    trustStats: z.boolean(),
   }),
 });
 

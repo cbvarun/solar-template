@@ -2,6 +2,7 @@ import { siteConfig } from "@/lib/config";
 
 /** Trust indicators. Values come straight from config, so placeholders are visible until replaced. */
 export function StatsSection() {
+  if (!siteConfig.features.trustStats) return null;
   const stats = siteConfig.home.trustStats;
   return (
     <section aria-label="Company at a glance" className="border-b">

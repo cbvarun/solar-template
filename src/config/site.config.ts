@@ -26,7 +26,7 @@ const config: SiteConfigInput = {
   },
 
   seo: {
-    siteUrl: "https://www.smartsolsystems.example", // [Replace; or set NEXT_PUBLIC_SITE_URL]
+    siteUrl: "https://www.smartsolsystems.in", // [Replace; or set NEXT_PUBLIC_SITE_URL]
     titleTemplate: "%s | {{companyName}}",
     defaultTitle: "Rooftop Solar in Bengaluru | {{companyName}}",
     locale: "en_IN",
@@ -157,7 +157,7 @@ const config: SiteConfigInput = {
 
   leadForm: {
     // web3formsAccessKey: falls back to NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
-    web3formsSubject: "New solar enquiry — {{companyName}}",
+    web3formsSubject: "New Enquiry — {{companyName}}",
     web3formsFromName: "{{companyName}} Website",
     successMessage: "Thank you. Our solar team will contact you shortly.",
     errorMessage:
@@ -172,7 +172,8 @@ const config: SiteConfigInput = {
     captcha: { provider: "turnstile" },
   },
 
-  features: defaultFeatures,
+  // Hidden until real numbers/reviews are available. Set to true to show.
+  features: { ...defaultFeatures, trustStats: false, testimonials: false },
 };
 
 export default config;
