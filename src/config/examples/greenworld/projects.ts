@@ -1,0 +1,48 @@
+import type { Project } from "@/types/content";
+
+/** ALL ENTRIES BELOW ARE SAMPLES. Replace with real projects and set isSample: false. */
+export const projects: Project[] = [
+  {
+    slug: "5kw-tile-roof-home-kottayam",
+    title: "5 kW home system on a tile roof, Kottayam",
+    summary: "A sloped-roof home system with a structure designed for monsoon wind and rain.",
+    customerType: "Residential",
+    location: { city: "Kottayam", state: "Kerala" },
+    systemSizeKw: 5, roofType: "Tile",
+    panels: "[Add panel brand, wattage and count]", inverter: "[Add inverter brand and model]",
+    installedOn: "[Month YYYY]", estimatedMonthlySavingsInr: 3500,
+    details: ["[Describe the roof, the challenge and how you solved it.]", "[Mention approvals handled, e.g. KSEB net metering.]"],
+    image: { src: "/images/projects/project-1.svg", alt: "Solar panels on a tile roof in Kottayam" },
+    gallery: [{ src: "/images/projects/project-1.svg", alt: "Installed panels on tile roof" }],
+    testimonial: { quote: "[Sample testimonial. Replace with a real customer quote.]", name: "Customer Name", role: "Homeowner" },
+    isSample: true,
+  },
+  {
+    slug: "20kw-commercial-ernakulam",
+    title: "20 kW commercial rooftop, Ernakulam",
+    summary: "A building rooftop system matched to daytime business load.",
+    customerType: "Commercial",
+    location: { city: "Ernakulam", state: "Kerala" },
+    systemSizeKw: 20, roofType: "RCC",
+    panels: "[Add panel brand, wattage and count]", inverter: "[Add inverter brand and model]",
+    installedOn: "[Month YYYY]", estimatedMonthlySavingsInr: 14000,
+    details: ["[Describe the load profile, design and results.]"],
+    image: { src: "/images/projects/project-2.svg", alt: "Commercial rooftop solar array in Ernakulam" },
+    gallery: [{ src: "/images/projects/project-2.svg", alt: "Commercial array" }],
+    isSample: true,
+  },
+  {
+    slug: "30kw-industrial-sheet-roof-alappuzha",
+    title: "30 kW industrial sheet roof, Alappuzha",
+    summary: "A sheet-roof system with corrosion-resistant structure for coastal conditions.",
+    customerType: "Industrial",
+    location: { city: "Alappuzha", state: "Kerala" },
+    systemSizeKw: 30, roofType: "Sheet",
+    panels: "[Add panel brand, wattage and count]", inverter: "[Add inverter brand and model]",
+    installedOn: "[Month YYYY]", estimatedMonthlySavingsInr: 21000,
+    details: ["[Describe the roof assessment, structure and commissioning.]"],
+    image: { src: "/images/projects/project-3.svg", alt: "Solar panels on an industrial sheet roof" },
+    gallery: [{ src: "/images/projects/project-3.svg", alt: "Industrial roof array" }],
+    isSample: true,
+  },
+];
