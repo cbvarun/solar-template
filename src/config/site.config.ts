@@ -20,8 +20,8 @@ const config: SiteConfigInput = {
     description:
       "Smartsol Systems designs, installs and maintains rooftop solar for homes, businesses and factories in Bengaluru and across Karnataka, with net-metering support and long-term service.",
     foundedYear: 2020, // [Replace with the real year]
-    logo: { light: "/brand/logo.png", alt: "Smartsol Systems logo", width: 124, height: 48 },
-    favicon: "/brand/favicon.ico",
+    logo: { light: "/brand/logo.svg", dark: "/brand/logo-dark.svg", alt: "Smartsol Systems logo", width: 152, height: 48 },
+    favicon: "/brand/favicon.svg",
     ogImage: "/brand/og-default.jpg",
   },
 

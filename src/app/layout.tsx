@@ -22,7 +22,8 @@ export const metadata: Metadata = {
   applicationName: siteConfig.company.name,
   icons: {
     icon: [
-      { url: siteConfig.company.favicon, sizes: "any" },
+      { url: siteConfig.company.favicon, type: "image/svg+xml" },
+      { url: "/brand/favicon.ico", sizes: "any" },
       { url: "/brand/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
     ],
