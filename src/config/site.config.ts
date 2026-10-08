@@ -68,7 +68,7 @@ const config: SiteConfigInput = {
       linkUrl:
         "https://www.google.com/maps/search/?api=1&query=Muthurayaswamy+Layout,+Hulimavu+Lake+Road,+Bengaluru+560076",
     },
-    businessHours: [{ days: "Monday – Saturday", hours: "9:00 AM – 6:00 PM IST" }],
+    businessHours: [{ days: "Monday – Sunday", hours: "Open 24 hours" }],
   },
 
   serviceAreas: {
