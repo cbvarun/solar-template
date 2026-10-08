@@ -64,9 +64,9 @@ const config: SiteConfigInput = {
     },
     googleMaps: {
       embedUrl:
-        "https://www.google.com/maps?q=Muthurayaswamy+Layout,+Hulimavu+Lake+Road,+Bengaluru+560076&output=embed",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3909.7777955920906!2d77.59997037509818!3d12.874249787432221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6b6236057749%3A0x66100f4e8facba10!2sSmartsol%20Systems!5e1!3m2!1sen!2sin!4v1791421594814!5m2!1sen!2sin",
       linkUrl:
-        "https://www.google.com/maps/search/?api=1&query=Muthurayaswamy+Layout,+Hulimavu+Lake+Road,+Bengaluru+560076",
+        "https://maps.app.goo.gl/FRv24iQSs3WZWkCn7",
     },
     businessHours: [{ days: "Monday – Sunday", hours: "Open 24 hours" }],
   },
