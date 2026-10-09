@@ -175,6 +175,8 @@ Config refers to icons by Lucide name (`Gauge`, `ShieldCheck`...). The allowed s
 
 Placeholders are SVGs. Replace them with real photos (WebP/JPEG) at the same paths, or change the paths in config and content. Keep the aspect ratios close to avoid layout shift: hero 4:3, services 16:10, projects 3:2. Static export cannot use Next.js image optimisation, so **resize and compress photos before adding them** (around 150 KB or less for most).
 
+`npm run images -- manifest.json` does the cropping, resizing and compression (see the header of `scripts/process-images.mjs` for the manifest format). In Claude Code, `/replace-images <folder>` runs the whole job: it maps photos to slots, processes them, updates the content files and checks the build.
+
 ---
 
 ## 5. Branding
