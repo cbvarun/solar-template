@@ -8,6 +8,8 @@
  *
  * slot      hero | service | project | gallery | og (sets the size, aspect ratio and file-size budget)
  * position  optional crop anchor: attention (default), entropy, centre, top, bottom, left, right
+ * extract   optional { left, top, width, height } in source pixels, cut out first
+ *           (e.g. to drop a logo or a sticker at the edge) before the slot crop
  *
  * The output format follows the extension of "out" (.webp, .jpg/.jpeg, .png).
  * Quality steps down until the file fits the slot's budget.
@@ -45,7 +47,8 @@ const POSITIONS = {
   left: "left",
   right: "right",
 };
-const QUALITIES = [82, 76, 70, 64, 58, 52, 46];
+// Below ~60 WebP/JPEG artefacts show; better a slightly heavy file than a blotchy one.
+const QUALITIES = [82, 76, 70, 64, 60];
 
 const manifestPath = process.argv[2];
 if (!manifestPath) {
@@ -79,8 +82,10 @@ for (const job of jobs) {
     const input = fromRoot(job.in);
     // .rotate() applies the EXIF orientation from phone cameras before cropping.
     const meta = await sharp(input).rotate().metadata();
-    const pipeline = sharp(input)
-      .rotate()
+    const base = job.extract
+      ? sharp(await sharp(input).rotate().extract(job.extract).toBuffer())
+      : sharp(input).rotate();
+    const pipeline = base
       .resize(slot.width, slot.height, { fit: "cover", position })
       .withMetadata({ orientation: undefined });
 
@@ -101,8 +106,8 @@ for (const job of jobs) {
 
     const kb = Math.round(statSync(out).size / 1024);
     const notes = [];
-    const w = meta.autoOrient?.width ?? meta.width;
-    const h = meta.autoOrient?.height ?? meta.height;
+    const w = job.extract?.width ?? meta.autoOrient?.width ?? meta.width;
+    const h = job.extract?.height ?? meta.autoOrient?.height ?? meta.height;
     if (w < slot.width || h < slot.height) notes.push(`upscaled from ${w}x${h}, may look soft`);
     if (kb > slot.maxKb) notes.push(`over the ${slot.maxKb} KB budget`);
     console.log(

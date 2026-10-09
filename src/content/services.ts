@@ -16,8 +16,8 @@ export const services: Service[] = [
     seoDescription:
       "Rooftop solar for homes: site survey, design, installation, {{netMeteringTerm}} paperwork and after-sales service from {{companyName}}.",
     image: {
-      src: "/images/services/residential-rooftop-solar.svg",
-      alt: "Solar panels installed on a home terrace",
+      src: "/images/services/residential-rooftop-solar.webp",
+      alt: "Row of solar panels on a tiled house roof behind a green hedge",
     },
     description: [
       "Your roof, your bills and your daily routine decide the right system size. {{companyName}} starts with your {{utilityName}} bills and a roof inspection, then designs a grid-connected system that fits your consumption and budget.",
@@ -66,8 +66,8 @@ export const services: Service[] = [
     seoDescription:
       "Grid-connected rooftop solar for factories, offices, schools and hospitals. Engineering, installation and {{utilityName}} approvals by {{companyName}}.",
     image: {
-      src: "/images/services/commercial-industrial-rooftop-solar.svg",
-      alt: "Large rooftop solar array on a factory shed",
+      src: "/images/services/commercial-industrial-rooftop-solar.webp",
+      alt: "Close-up of a large blue solar panel array under a cloudy sky",
     },
     description: [
       "Businesses that run mostly in daylight use rooftop solar well, because generation lines up with load. We engineer systems for factories, warehouses, offices, schools, hospitals and hotels, starting from your load profile and roof condition.",
@@ -116,8 +116,8 @@ export const services: Service[] = [
     seoDescription:
       "Professional solar panel cleaning and performance checks to recover lost generation. One-time and scheduled visits from {{companyName}}.",
     image: {
-      src: "/images/services/solar-panel-cleaning-maintenance.svg",
-      alt: "Technician cleaning rooftop solar panels",
+      src: "/images/services/solar-panel-cleaning-maintenance.webp",
+      alt: "Long-handled brush washing dust off wet solar panels",
     },
     description: [
       "Dust, bird droppings, pollen and hard-water stains all reduce generation. We clean with soft brushes and clean water, and check connections and shading while we are on the roof.",
@@ -164,8 +164,8 @@ export const services: Service[] = [
     seoDescription:
       "Inverter errors, low generation or monitoring offline? {{companyName}} diagnoses and repairs rooftop solar systems.",
     image: {
-      src: "/images/services/solar-repair-troubleshooting.svg",
-      alt: "Technician testing a solar inverter",
+      src: "/images/services/solar-repair-troubleshooting.webp",
+      alt: "Technician in work gloves using a drill on a solar panel clamp",
     },
     description: [
       "A system that suddenly generates less, shows an inverter error, trips, or goes offline in the app usually has a findable cause. We start with data and a physical inspection, not guesswork.",
@@ -212,8 +212,8 @@ export const services: Service[] = [
     seoDescription:
       "Annual maintenance contracts for rooftop solar: scheduled cleaning, inspections, performance reports and priority support from {{companyName}}.",
     image: {
-      src: "/images/services/annual-maintenance-contract.svg",
-      alt: "Technician inspecting a rooftop solar array",
+      src: "/images/services/annual-maintenance-contract.webp",
+      alt: "Technician in a yellow hard hat checking panels on a large rooftop array",
     },
     description: [
       "An AMC keeps your system generating close to its design output and gives you one number to call when something looks off. Visits are scheduled, so nothing depends on you remembering.",
@@ -260,8 +260,8 @@ export const services: Service[] = [
     seoDescription:
       "Help with {{netMeteringTerm}} applications, {{utilityName}} approvals and {{subsidyScheme}} documentation for rooftop solar systems.",
     image: {
-      src: "/images/services/net-metering-subsidy-assistance.svg",
-      alt: "Electricity meter and paperwork for solar net metering",
+      src: "/images/services/net-metering-subsidy-assistance.webp",
+      alt: "Digital electricity meter and fuse board on a house wall",
     },
     description: [
       "Connecting a system to the grid involves applications, drawings, inspections and a meter change. {{companyName}} prepares and follows up the paperwork with {{utilityName}} so the process doesn't stall.",
@@ -307,8 +307,8 @@ export const services: Service[] = [
     seoDescription:
       "Rooftop solar site survey and energy audit: shadow analysis, load study and a sizing report before you commit. By {{companyName}}.",
     image: {
-      src: "/images/services/site-survey-energy-audit.svg",
-      alt: "Engineer measuring a rooftop during a solar site survey",
+      src: "/images/services/site-survey-energy-audit.webp",
+      alt: "Two engineers in hard hats reviewing a tablet on a flat rooftop",
     },
     description: [
       "A good solar project starts with measurement. We visit your property, map usable roof area, check shading through the day, inspect the structure and review your electricity bills.",

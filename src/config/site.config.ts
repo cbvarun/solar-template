@@ -97,7 +97,7 @@ const config: SiteConfigInput = {
         "Site survey, design, installation, BESCOM net-metering paperwork and after-sales service from one Bengaluru-based team.",
       primaryCta: { label: "Book a site survey", href: "/contact/" },
       whatsappCtaLabel: "Chat on WhatsApp",
-      image: { src: "/images/hero.svg", alt: "Solar panels on a Bengaluru home terrace at sunrise" },
+      image: { src: "/images/hero.webp", alt: "Rows of solar panels on a large factory roof at sunset" },
     },
     trustStats: [
       { value: "[000]+", label: "Installations completed" },

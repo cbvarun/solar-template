@@ -40,6 +40,7 @@ Show the user a table: photo → slot → output path → crop anchor → propos
 - A photo can fill more than one slot (e.g. a project's main image can also be its first gallery photo).
 - **Crop anchor** (`position`): `attention` by default. Use `top` / `bottom` / `left` / `right` when the subject sits near an edge, so the panels don't get cut. Watch portrait photos: a 3:2 or 16:10 crop keeps only the middle band.
 - **Alt text:** describe what's actually in the photo, specific and short. Include size and location if you know them, e.g. "5 kW panels on a terrace in Whitefield". Don't start with "Image of", and don't stuff it with keywords.
+- **Logos, stickers, ID numbers** near an edge (brand names on equipment, utility consumer numbers, house numbers): cut them out with `extract` (see step 3). If they sit in the middle, pick another slot or photo.
 - Flag problems: photos under ~1000px wide (they'll look soft), blurry or dark shots, visible faces or house numbers of private customers (ask if they have consent), watermarks or stock photos they may not have rights to.
 - List any slots left without a photo. Those keep their SVG placeholder.
 
@@ -55,6 +56,8 @@ Write the confirmed mapping as a manifest in the scratchpad:
   { "in": "/abs/path/IMG_0040.jpg", "out": "public/images/projects/3kw-home-system-jp-nagar/main.webp", "slot": "project" }
 ]
 ```
+
+Add `"extract": { "left": 0, "top": 0, "width": 1550, "height": 1601 }` (source pixels, after rotation) to a job to cut out a region before the slot crop, e.g. to drop a logo at the edge. Keep the region at least the slot's size, or the output will be upscaled.
 
 Run `npm run images -- <manifest.json>`. The script corrects phone rotation, crops to the slot's aspect ratio, resizes, and steps the quality down until the file fits the slot's KB budget. Read its output:
 - `✓`: fine.
