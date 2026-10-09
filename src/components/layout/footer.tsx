@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter, Youtube, Clock, type LucideIcon } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Star, Twitter, Youtube, Clock, type LucideIcon } from "lucide-react";
 import { siteConfig, t } from "@/lib/config";
 import { Logo } from "@/components/layout/logo";
 import { getFooterColumns } from "@/lib/nav";
 
-const SOCIALS: { key: keyof typeof siteConfig.social; label: string; Icon: LucideIcon }[] = [
+const SOCIALS: { key: Exclude<keyof typeof siteConfig.social, "googleReview">; label: string; Icon: LucideIcon }[] = [
   { key: "facebook", label: "Facebook", Icon: Facebook },
   { key: "instagram", label: "Instagram", Icon: Instagram },
   { key: "linkedin", label: "LinkedIn", Icon: Linkedin },
@@ -46,6 +46,17 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+          )}
+          {social.googleReview && (
+            <a
+              href={social.googleReview}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 rounded-md bg-background/10 px-4 py-2.5 text-sm font-semibold hover:bg-background/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background/70"
+            >
+              <Star className="h-4 w-4 fill-current text-secondary" aria-hidden="true" />
+              Review us on Google
+            </a>
           )}
         </div>
 

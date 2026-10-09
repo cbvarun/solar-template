@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/config";
+import { siteConfig, t } from "@/lib/config";
 import { Section } from "@/components/sections/section";
 import { SavingsEstimator } from "@/components/sections/savings-estimator";
 
@@ -19,6 +19,16 @@ export function SavingsSection() {
           costPerUnit={savings.costPerUnit}
           unitsPerKwPerMonth={savings.unitsPerKwPerMonth}
           ctaLabel={siteConfig.cta.quoteLabel}
+          whatsapp={{
+            number: siteConfig.contact.whatsappNumber,
+            template: t(siteConfig.contact.whatsappEstimateTemplate),
+            label: "Send this estimate on WhatsApp",
+          }}
+          subsidy={
+            siteConfig.home.subsidy?.bands
+              ? { scheme: siteConfig.regional.subsidyScheme, bands: siteConfig.home.subsidy.bands }
+              : undefined
+          }
         />
       </div>
     </Section>

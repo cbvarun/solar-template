@@ -1,5 +1,6 @@
 import type { SiteConfigInput } from "./site.schema";
 import { services } from "@/content/services";
+import { systems } from "@/content/systems";
 
 /** Shared structure so a new company config stays short. Override any of it in site.config.ts. */
 
@@ -7,6 +8,8 @@ const serviceLinks = services.map((s) => ({
   label: s.title,
   href: `/services/${s.slug}/`,
 }));
+
+const systemLinks = systems.map((s) => ({ label: s.title, href: `/solar/${s.slug}/` }));
 
 export const defaultNavigation: SiteConfigInput["navigation"] = {
   main: [
@@ -20,7 +23,7 @@ export const defaultNavigation: SiteConfigInput["navigation"] = {
   ],
   headerCta: { label: "Get a Quote", action: "quote-sheet" },
   footerColumns: [
-    { title: "Services", links: serviceLinks },
+    { title: "Services", links: [...serviceLinks, ...systemLinks] },
     {
       title: "Company",
       links: [

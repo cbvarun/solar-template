@@ -40,7 +40,14 @@ export function ProjectCard({ project }: { project: Project }) {
             <dt className="text-muted-foreground">System size</dt>
             <dd className="font-semibold">{project.systemSizeKw} kW</dd>
           </div>
-          {project.estimatedMonthlySavingsInr !== undefined && (
+          {project.billBeforeInr !== undefined && project.billAfterInr !== undefined ? (
+            <div>
+              <dt className="text-muted-foreground">Monthly bill</dt>
+              <dd className="font-semibold">
+                {formatINR(project.billBeforeInr)} → {formatINR(project.billAfterInr)}
+              </dd>
+            </div>
+          ) : project.estimatedMonthlySavingsInr !== undefined && (
             <div>
               <dt className="text-muted-foreground">Est. savings</dt>
               <dd className="font-semibold">{formatINR(project.estimatedMonthlySavingsInr)}/month</dd>

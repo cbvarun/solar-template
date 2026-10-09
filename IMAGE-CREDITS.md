@@ -12,3 +12,4 @@ Stock photos used on the site. All are from Unsplash under the [Unsplash License
 | `public/images/services/annual-maintenance-contract.webp` | [Unsplash](https://unsplash.com/photos/a-man-in-a-hardhat-working-on-a-solar-panel-JlhvFEVMwng) | Siwawut Phoophinyo | Cropped 16:10 |
 | `public/images/services/net-metering-subsidy-assistance.webp` | [Unsplash](https://unsplash.com/photos/a-wall-with-a-phone-and-a-plant-next-to-it-1G5gtser-qY) | MD_JERRY | Cropped to remove a utility sticker with a consumer number |
 | `public/images/services/site-survey-energy-audit.webp` | [Unsplash](https://unsplash.com/photos/a-couple-of-people-standing-on-top-of-a-roof-vvsjM-36_XA) | Marketing Department | Cropped 16:10 |
+| `public/images/services/hybrid-solar-battery-backup.webp` | [Unsplash](https://unsplash.com/photos/a-house-with-a-solar-panel-on-the-roof-tR8hkdt2VeU) | Zendure Power Station | Cropped 16:10. A computer-generated render, not a real installation |

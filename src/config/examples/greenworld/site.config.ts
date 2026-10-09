@@ -90,12 +90,14 @@ const config: SiteConfigInput = {
 
   home: {
     hero: {
-      headline: "Cut your KSEB bill with rooftop solar built for Kerala roofs.",
+      headline: "Rooftop solar in Kottayam, built for Kerala roofs.",
       subheadline:
-        "Survey, design, installation and KSEB net-metering paperwork from a Kottayam-based team that stays around for service.",
+        "Cut your KSEB bill with a system sized to your home or business. Survey, design, installation and KSEB net-metering paperwork from a Kottayam-based team that stays around for service.",
       primaryCta: { label: "Book a site survey", href: "/contact/" },
       whatsappCtaLabel: "Chat on WhatsApp",
       image: { src: "/images/hero.svg", alt: "Solar panels on a tiled roof in Kerala" },
+      highlights: ["Homes, businesses & institutions", "On-grid & hybrid with battery backup", "KSEB net metering", "PM Surya Ghar subsidy help"],
+      areas: ["Kottayam", "Kallara", "Ernakulam", "Alappuzha", "Idukki", "Pathanamthitta"],
     },
     trustStats: [
       { value: "[000]+", label: "Installations completed" },
@@ -124,6 +126,90 @@ const config: SiteConfigInput = {
         { title: "Low upkeep", body: "Periodic cleaning and a yearly check keep output healthy." },
       ],
     },
+    subsidy: {
+      headline: "{{subsidyScheme}} subsidy for home solar",
+      intro:
+        "Homes installing rooftop solar can get central financial assistance, paid into your bank account after the system is installed and inspected. We take you through the process, from portal registration to the claim.",
+      tiers: [
+        { amount: "₹30,000", label: "per kW, for the first 2 kW" },
+        { amount: "₹18,000", label: "for the 3rd kW" },
+        { amount: "₹78,000", label: "maximum, for systems of 3 kW and above" },
+      ],
+      footnote:
+        "For individual homes. Housing societies and RWAs can get ₹18,000 per kW for common facilities such as lifts, pumps and EV charging.",
+      checkedOn: "checked October 2026", // [Re-check the amounts on the portal before launch and every few months]
+      sourceUrl: "https://pmsuryaghar.gov.in/",
+      helpHeadline: "We handle the process with you",
+      helpItems: [
+        "Site survey and the right system size for your bills",
+        "Registration on the national rooftop solar portal",
+        "{{utilityName}} feasibility approval and {{netMeteringTerm}} paperwork",
+        "Installation, commissioning and inspection",
+        "Guidance on the subsidy claim and documents",
+      ],
+      ctaLabel: "Check my subsidy eligibility",
+      bands: [
+        { uptoKw: 2, perKw: 30000 },
+        { uptoKw: 3, perKw: 18000 },
+      ],
+    },
+    packages: {
+      headline: "Popular rooftop solar systems",
+      intro: "Typical sizes for homes and small businesses. We confirm the right size for your roof and bills at the site survey.",
+      items: [
+        {
+          name: "3 kW",
+          kw: 3,
+          tagline: "For small and medium homes",
+          points: ["Needs about 300 sq ft of shade-free roof", "Panels, inverter, structure and installation", "{{utilityName}} {{netMeteringTerm}} paperwork", "Subsidy application support"],
+          ctaLabel: "Get a 3 kW quote",
+          service: "residential-rooftop-solar",
+        },
+        {
+          name: "5 kW",
+          kw: 5,
+          tagline: "For larger homes and higher bills",
+          points: ["Needs about 500 sq ft of shade-free roof", "Panels, inverter, structure and installation", "{{utilityName}} {{netMeteringTerm}} paperwork", "Subsidy application support"],
+          ctaLabel: "Get a 5 kW quote",
+          service: "residential-rooftop-solar",
+        },
+        {
+          name: "6 kW and above",
+          tagline: "For villas, shops and high consumption",
+          points: ["Designed around your roof and load", "Three-phase systems where your connection needs it", "Commercial and industrial sizes on request"],
+          ctaLabel: "Get a custom quote",
+          service: "residential-rooftop-solar",
+        },
+        {
+          name: "Hybrid + battery",
+          tagline: "Keep the power on during cuts",
+          points: ["Hybrid inverter and lithium battery", "Backup for the essential loads you choose", "Surplus still exported where {{netMeteringTerm}} allows"],
+          ctaLabel: "Get a hybrid quote",
+          service: "hybrid-solar-battery-backup",
+        },
+      ],
+      footnote: "No fixed prices: cost depends on your roof, structure height and the equipment you choose. Every quote is itemised.",
+    },
+    // brands: {
+    //   headline: "Equipment we install",
+    //   groups: [
+    //     { label: "Panels", items: [{ name: "[Brand]", logo: "/images/brands/[brand].svg" }] },
+    //     { label: "Inverters", items: [{ name: "[Brand]" }] },
+    //     { label: "Batteries", items: [{ name: "[Brand]" }] },
+    //   ],
+    // },
+  },
+
+  landing: {
+    headline: "Get a free rooftop solar quote in {{city}}",
+    subheadline:
+      "Tell us about your home or business. We size the system from your {{utilityName}} bill and show what the {{subsidyScheme}} subsidy covers.",
+    bullets: [
+      "System sized to your bills and roof, not a standard package",
+      "Subsidy and {{utilityName}} {{netMeteringTerm}} paperwork handled",
+      "On-grid and hybrid systems with battery backup",
+      "Itemised, written quote with every component and warranty",
+    ],
   },
 
   about: {
@@ -160,6 +246,11 @@ const config: SiteConfigInput = {
     errorMessage:
       "Something went wrong while sending your enquiry. Please try again, or call or WhatsApp us directly.",
     redirectToThankYou: false,
+    billPrompt: {
+      text: "Want a faster, more accurate quote? Send us a photo of your latest {{utilityName}} bill on WhatsApp so we can size your system before the site visit.",
+      buttonLabel: "Send my bill on WhatsApp",
+      whatsappMessage: "Hi {{companyName}}, I just sent an enquiry on your website. Here is a photo of my latest electricity bill.",
+    },
     fields: defaultLeadFormFields,
     options: defaultLeadFormOptions,
     consentText:

@@ -43,6 +43,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     ["Inverter", project.inverter],
     ["Installed", project.installedOn],
   ];
+  const bills =
+    project.billBeforeInr !== undefined && project.billAfterInr !== undefined
+      ? { before: project.billBeforeInr, after: project.billAfterInr }
+      : null;
+  if (bills) {
+    specs.push(["Monthly bill", `${formatINR(bills.before)} → ${formatINR(bills.after)}`]);
+  }
   if (project.estimatedMonthlySavingsInr !== undefined) {
     specs.push(["Estimated savings", `${formatINR(project.estimatedMonthlySavingsInr)} per month`]);
   }
@@ -71,6 +78,26 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
           <div className="space-y-8">
+            {bills && (
+              <dl className="grid grid-cols-2 gap-4 rounded-lg border bg-card p-5 shadow-card sm:grid-cols-3">
+                <div>
+                  <dt className="text-sm text-muted-foreground">Bill before solar</dt>
+                  <dd className="font-heading text-2xl font-bold">{formatINR(bills.before)}</dd>
+                </div>
+                <div>
+                  <dt className="text-sm text-muted-foreground">Bill after solar</dt>
+                  <dd className="font-heading text-2xl font-bold text-primary">{formatINR(bills.after)}</dd>
+                </div>
+                {bills.before > 0 && (
+                  <div>
+                    <dt className="text-sm text-muted-foreground">Reduction</dt>
+                    <dd className="font-heading text-2xl font-bold">
+                      {Math.round(((bills.before - bills.after) / bills.before) * 100)}%
+                    </dd>
+                  </div>
+                )}
+              </dl>
+            )}
             <Image
               src={project.image.src}
               alt={project.image.alt}

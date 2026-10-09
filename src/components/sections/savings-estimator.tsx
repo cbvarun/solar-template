@@ -1,20 +1,28 @@
 "use client";
 
 import { useId, useState } from "react";
+import { MessageCircle } from "lucide-react";
 import { QuoteButton } from "@/components/forms/quote-sheet";
+import { Button } from "@/components/ui/button";
 import { formatINR } from "@/lib/utils";
+import { SQ_FT_PER_KW, TARGET_OFFSET, subsidyForKw, type SubsidyBand } from "@/lib/subsidy";
 
 interface Props {
   costPerUnit: number;
   unitsPerKwPerMonth: number;
   ctaLabel: string;
+  whatsapp: {
+    number: string;
+    /** Message with {{bill}} and {{kw}} still unresolved; filled in from the slider. */
+    template: string;
+    label: string;
+  };
+  /** Home subsidy rates; omit to leave the subsidy line out. */
+  subsidy?: { scheme: string; bands: SubsidyBand[] };
 }
 
-/** Share of your consumption the suggested system is sized to cover. */
-const TARGET_OFFSET = 0.8;
-const SQ_FT_PER_KW = 100;
 
-export function SavingsEstimator({ costPerUnit, unitsPerKwPerMonth, ctaLabel }: Props) {
+export function SavingsEstimator({ costPerUnit, unitsPerKwPerMonth, ctaLabel, whatsapp, subsidy }: Props) {
   const inputId = useId();
   const [bill, setBill] = useState(5000);
 
@@ -23,6 +31,9 @@ export function SavingsEstimator({ costPerUnit, unitsPerKwPerMonth, ctaLabel }: 
   const kw = Math.max(1, Math.round(rawKw * 2) / 2); // nearest 0.5 kW, minimum 1
   const generation = Math.round(kw * unitsPerKwPerMonth);
   const monthlySaving = Math.min(Math.round(generation * costPerUnit), bill);
+  const subsidyAmount = subsidy ? subsidyForKw(kw, subsidy.bands) : 0;
+  const message = whatsapp.template.replaceAll("{{bill}}", formatINR(bill)).replaceAll("{{kw}}", String(kw));
+  const whatsappHref = `https://wa.me/${whatsapp.number}?text=${encodeURIComponent(message)}`;
 
   return (
     <div className="rounded-lg border bg-card p-6 shadow-card sm:p-8">
@@ -72,15 +83,30 @@ export function SavingsEstimator({ costPerUnit, unitsPerKwPerMonth, ctaLabel }: 
         </div>
       </dl>
 
+      {subsidyAmount > 0 && (
+        <p className="mt-4 rounded-md border border-primary/25 bg-primary/5 p-4 text-sm" aria-live="polite">
+          <span className="font-semibold">If this is your home,</span> a {kw} kW system may qualify for a subsidy of
+          about <span className="font-semibold text-primary">{formatINR(subsidyAmount)}</span> under {subsidy?.scheme}.
+        </p>
+      )}
+
       <p className="mt-4 text-sm text-muted-foreground">
         Illustrative only. It assumes about {Math.round(costPerUnit * 10) / 10} ₹ per unit and {unitsPerKwPerMonth} units
         per kW each month. Real figures depend on your roof, shading, tariff slabs and usage. We confirm the numbers
         at the site survey. For commercial or industrial roofs, request a proposal.
       </p>
 
-      <QuoteButton size="lg" className="mt-5 w-full sm:w-auto">
-        {ctaLabel}
-      </QuoteButton>
+      <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+        <QuoteButton size="lg" className="w-full sm:w-auto">
+          {ctaLabel}
+        </QuoteButton>
+        <Button asChild size="lg" variant="whatsapp" className="w-full sm:w-auto">
+          <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
+            <MessageCircle className="h-5 w-5" aria-hidden="true" />
+            {whatsapp.label}
+          </a>
+        </Button>
+      </div>
     </div>
   );
 }

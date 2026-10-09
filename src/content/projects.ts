@@ -1,6 +1,9 @@
 import type { Project } from "@/types/content";
 
-/** ALL ENTRIES BELOW ARE SAMPLES. Replace with real projects and set isSample: false. */
+/**
+ * ALL ENTRIES BELOW ARE SAMPLES. Replace with real projects and set isSample: false.
+ * For real projects, add billBeforeInr and billAfterInr (monthly bills from the customer) when you have them.
+ */
 export const projects: Project[] = [
   {
     slug: "3kw-home-system-jp-nagar",

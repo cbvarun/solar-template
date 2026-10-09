@@ -2,6 +2,9 @@ import { buildMetadata } from "@/lib/metadata";
 import { Hero } from "@/components/sections/hero";
 import { StatsSection } from "@/components/sections/stats-section";
 import { ServicesOverview } from "@/components/sections/services-overview";
+import { SubsidySection } from "@/components/sections/subsidy-section";
+import { PackagesSection } from "@/components/sections/packages-section";
+import { BrandsSection } from "@/components/sections/brands-section";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { ProcessSteps } from "@/components/sections/process-steps";
 import { SavingsSection } from "@/components/sections/savings-section";
@@ -17,7 +20,10 @@ export default function HomePage() {
       <Hero />
       <StatsSection />
       <ServicesOverview />
+      <PackagesSection />
+      <SubsidySection />
       <WhyChooseUs />
+      <BrandsSection />
       <ProcessSteps />
       <SavingsSection />
       <TestimonialsSection />

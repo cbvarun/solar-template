@@ -1,7 +1,7 @@
 import {
   Home, Factory, Droplets, Wrench, CalendarCheck, FileCheck2, ClipboardList,
   ShieldCheck, BadgeIndianRupee, Zap, Headset, Sun, Users, Award, Clock, Gauge,
-  MapPin, Search, PencilRuler, HardHat, PlugZap, LifeBuoy, MessagesSquare,
+  MapPin, Search, PencilRuler, HardHat, PlugZap, LifeBuoy, MessagesSquare, BatteryCharging,
   type LucideIcon,
 } from "lucide-react";
 
@@ -9,7 +9,7 @@ import {
 const ICONS: Record<string, LucideIcon> = {
   Home, Factory, Droplets, Wrench, CalendarCheck, FileCheck2, ClipboardList,
   ShieldCheck, BadgeIndianRupee, Zap, Headset, Sun, Users, Award, Clock, Gauge,
-  MapPin, Search, PencilRuler, HardHat, PlugZap, LifeBuoy, MessagesSquare,
+  MapPin, Search, PencilRuler, HardHat, PlugZap, LifeBuoy, MessagesSquare, BatteryCharging,
 };
 
 export function getIcon(name: string): LucideIcon {

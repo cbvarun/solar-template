@@ -1,6 +1,9 @@
 import { z } from "zod";
-import { t } from "@/lib/config";
+import { siteConfig, t } from "@/lib/config";
+import { formatINR } from "@/lib/utils";
+import { systemFacts } from "@/lib/subsidy";
 import { services as rawServices } from "@/content/services";
+import { systems as rawSystems } from "@/content/systems";
 import { projects as rawProjects } from "@/content/projects";
 import { locations as rawLocations } from "@/content/locations";
 import { testimonials as rawTestimonials } from "@/content/testimonials";
@@ -9,6 +12,7 @@ import { processSteps as rawProcess } from "@/content/process";
 import { legalPages as rawLegal } from "@/content/legal";
 import {
   serviceSchema,
+  systemSizeSchema,
   projectSchema,
   locationSchema,
   testimonialSchema,
@@ -16,6 +20,7 @@ import {
   processStepSchema,
   legalPageSchema,
   type Service,
+  type SystemSize,
   type Project,
   type Location,
   type Testimonial,
@@ -62,6 +67,24 @@ function assertRefs(name: string, refs: string[], valid: Set<string>) {
 // ---------- load + validate ----------
 
 const services: Service[] = resolveDeep(load("services.ts", z.array(serviceSchema), rawServices));
+/** Rule-of-thumb figures for a size, from the same settings the calculator uses. */
+export const getSystemFacts = (kw: number) =>
+  systemFacts(kw, {
+    costPerUnit: siteConfig.home.savings.costPerUnit,
+    unitsPerKwPerMonth: siteConfig.home.savings.unitsPerKwPerMonth,
+    bands: siteConfig.home.subsidy?.bands,
+  });
+
+const systems: SystemSize[] = load("systems.ts", z.array(systemSizeSchema), rawSystems).map((sys: SystemSize) => {
+  const f = getSystemFacts(sys.kw);
+  return resolveDeep(sys, {
+    units: f.unitsPerMonth,
+    roof: f.roofSqFt,
+    panels: f.panels,
+    bill: formatINR(f.typicalBill),
+    subsidy: f.subsidy ? formatINR(f.subsidy) : "set by the scheme",
+  });
+});
 const projects: Project[] = resolveDeep(load("projects.ts", z.array(projectSchema), rawProjects));
 const testimonials: Testimonial[] = resolveDeep(
   load("testimonials.ts", z.array(testimonialSchema), rawTestimonials),
@@ -77,6 +100,7 @@ const locations: Location[] = load("locations.ts", z.array(locationSchema), rawL
 
 assertUnique("services", services.map((s) => s.slug));
 assertUnique("projects", projects.map((p) => p.slug));
+assertUnique("systems", systems.map((s) => s.slug));
 assertUnique("locations", locations.map((l) => l.slug));
 
 const serviceSlugs = new Set(services.map((s) => s.slug));
@@ -110,6 +134,12 @@ export const getRelatedServices = (service: Service): Service[] =>
 
 /** Options for the lead form's "Interested service" dropdown. */
 export const getServiceOptions = (): string[] => [...services.map((s) => s.title), "Not sure yet"];
+
+// ---------- system sizes ----------
+
+export const getSystems = (): SystemSize[] => systems;
+export const getSystemBySlug = (slug: string): SystemSize | undefined => systems.find((s) => s.slug === slug);
+export const getSystemByKw = (kw: number): SystemSize | undefined => systems.find((s) => s.kw === kw);
 
 // ---------- projects ----------
 

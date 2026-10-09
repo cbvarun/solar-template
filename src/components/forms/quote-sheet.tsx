@@ -5,11 +5,26 @@ import Link from "next/link";
 import { Button, type ButtonProps } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
 
+/** Pre-fills the sheet's form, e.g. from a "Get 3 kW quote" button. */
+export interface QuotePrefill {
+  /** A service title, as shown in the "Interested service" dropdown. */
+  service?: string;
+  message?: string;
+  /** Sent with the lead instead of "quote-sheet", so you can see which button it came from. */
+  source?: string;
+}
+
 interface Ctx {
   enabled: boolean;
-  open: () => void;
+  open: (prefill?: QuotePrefill) => void;
+  prefill: QuotePrefill | null;
 }
-const QuoteSheetContext = createContext<Ctx>({ enabled: false, open: () => {} });
+const QuoteSheetContext = createContext<Ctx>({ enabled: false, open: () => {}, prefill: null });
+
+/** The prefill of the currently open quote sheet (null when opened without one). */
+export function useQuotePrefill(): QuotePrefill | null {
+  return useContext(QuoteSheetContext).prefill;
+}
 
 interface ProviderProps {
   enabled: boolean;
@@ -26,7 +41,18 @@ interface ProviderProps {
  */
 export function QuoteSheetProvider({ enabled, title, description, form, children }: ProviderProps) {
   const [open, setOpen] = useState(false);
-  const value = useMemo(() => ({ enabled, open: () => setOpen(true) }), [enabled]);
+  const [prefill, setPrefill] = useState<QuotePrefill | null>(null);
+  const value = useMemo(
+    () => ({
+      enabled,
+      prefill,
+      open: (p?: QuotePrefill) => {
+        setPrefill(p ?? null);
+        setOpen(true);
+      },
+    }),
+    [enabled, prefill],
+  );
 
   return (
     <QuoteSheetContext.Provider value={value}>
@@ -38,7 +64,10 @@ export function QuoteSheetProvider({ enabled, title, description, form, children
               <SheetTitle>{title}</SheetTitle>
               <SheetDescription className="mt-1">{description}</SheetDescription>
             </div>
-            <div className="overflow-y-auto px-6 pb-8">{form}</div>
+            {/* Keyed by the prefill so the form starts fresh when a different button opens it. */}
+            <div key={JSON.stringify(prefill)} className="overflow-y-auto px-6 pb-8">
+              {form}
+            </div>
           </SheetContent>
         </Sheet>
       )}
@@ -47,7 +76,7 @@ export function QuoteSheetProvider({ enabled, title, description, form, children
 }
 
 /** Opens the quote sheet. If the sheet feature is off, it links to /contact/ instead. */
-export function QuoteButton({ children, onClick, ...props }: ButtonProps) {
+export function QuoteButton({ children, onClick, prefill, ...props }: ButtonProps & { prefill?: QuotePrefill }) {
   const { enabled, open } = useContext(QuoteSheetContext);
 
   if (!enabled) {
@@ -63,7 +92,7 @@ export function QuoteButton({ children, onClick, ...props }: ButtonProps) {
       {...props}
       onClick={(e) => {
         onClick?.(e);
-        open();
+        open(prefill);
       }}
     >
       {children}

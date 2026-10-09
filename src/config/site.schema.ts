@@ -89,6 +89,12 @@ export const siteConfigSchema = z.object({
     phoneHref: z.string(),
     whatsappNumber: z.string().regex(/^\d{10,15}$/, "Digits only, with country code"),
     whatsappMessageTemplate: z.string(),
+    /** Sent from the savings calculator. {{bill}} is the visitor's bill; {{kw}} the suggested size. */
+    whatsappEstimateTemplate: z
+      .string()
+      .default(
+        "Hi {{companyName}}, I used the savings calculator on your website. My monthly electricity bill is about {{bill}} and it suggested a {{kw}} kW system. Please send me a quote for rooftop solar in {{city}}.",
+      ),
     email: z.string().email(),
     address: z.object({
       line1: z.string(),
@@ -129,6 +135,11 @@ export const siteConfigSchema = z.object({
     youtube: z.string().url().optional(),
     x: z.string().url().optional(),
     googleBusiness: z.string().url().optional(),
+    /**
+     * Your "Ask for reviews" link from the Google Business Profile (https://g.page/r/…/review).
+     * Shows "Review us on Google" in the footer and powers the /review/ page. Not a profile, so not in sameAs.
+     */
+    googleReview: z.string().url().optional(),
   }),
 
   // 7. Analytics (each loads only if set)
@@ -159,6 +170,10 @@ export const siteConfigSchema = z.object({
       primaryCta: z.object({ label: z.string(), href: z.string() }),
       whatsappCtaLabel: z.string(),
       image: z.object({ src: z.string(), alt: z.string() }),
+      /** Short chips under the subheadline, e.g. "On-grid", "BESCOM net metering". */
+      highlights: z.array(z.string()).optional(),
+      /** Localities shown as "Serving A · B · C and nearby areas". */
+      areas: z.array(z.string()).optional(),
     }),
     trustStats: z.array(z.object({ value: z.string(), label: z.string() })),
     whyChooseUs: z.array(z.object({ icon: z.string(), title: z.string(), body: z.string() })),
@@ -168,7 +183,79 @@ export const siteConfigSchema = z.object({
       unitsPerKwPerMonth: z.number().positive(),
       benefits: z.array(z.object({ title: z.string(), body: z.string() })),
     }),
+    /** Government subsidy section. Omit to hide it. Re-check the amounts against sourceUrl regularly. */
+    subsidy: z
+      .object({
+        headline: z.string(),
+        intro: z.string(),
+        tiers: z.array(z.object({ amount: z.string(), label: z.string() })).min(1),
+        footnote: z.string().optional(),
+        /** When the amounts were last checked against the official source, e.g. "October 2026". */
+        checkedOn: z.string(),
+        sourceUrl: z.string().url(),
+        helpHeadline: z.string(),
+        helpItems: z.array(z.string()).min(1),
+        ctaLabel: z.string(),
+        /**
+         * The same amounts as numbers, for the calculator and package cards, in ascending order.
+         * The last band's uptoKw is the cap. Omit to show no subsidy figures there.
+         */
+        bands: z
+          .array(z.object({ uptoKw: z.number().positive(), perKw: z.number().nonnegative() }))
+          .min(1)
+          .optional(),
+      })
+      .optional(),
+    /** "Popular systems" cards. No prices: each card opens the quote form pre-filled. Omit to hide. */
+    packages: z
+      .object({
+        headline: z.string(),
+        intro: z.string().optional(),
+        items: z
+          .array(
+            z.object({
+              name: z.string(),
+              /** Set for sized systems: shows expected generation and the home subsidy. */
+              kw: z.number().positive().optional(),
+              tagline: z.string(),
+              points: z.array(z.string()).min(1),
+              ctaLabel: z.string(),
+              /** Service slug to pre-select in the quote form. */
+              service: z.string().optional(),
+            }),
+          )
+          .min(1),
+        footnote: z.string().optional(),
+      })
+      .optional(),
+    /**
+     * Equipment brands. Only list brands you really install, and only call yourself an
+     * authorised dealer/installer where you hold that authorisation. Omit to hide.
+     */
+    brands: z
+      .object({
+        headline: z.string(),
+        intro: z.string().optional(),
+        groups: z
+          .array(
+            z.object({
+              label: z.string(),
+              items: z.array(z.object({ name: z.string(), logo: z.string().optional() })).min(1),
+            }),
+          )
+          .min(1),
+      })
+      .optional(),
   }),
+
+  /** Ads landing page (/free-solar-quote/, noindex). Falls back to the home hero copy when omitted. */
+  landing: z
+    .object({
+      headline: z.string(),
+      subheadline: z.string(),
+      bullets: z.array(z.string()).min(1),
+    })
+    .optional(),
 
   about: z.object({
     story: z.array(z.string()),
@@ -195,6 +282,14 @@ export const siteConfigSchema = z.object({
     successMessage: z.string(),
     errorMessage: z.string(),
     redirectToThankYou: z.boolean().default(false),
+    /** Shown after a successful enquiry: asks for a photo of the bill on WhatsApp. Omit to hide. */
+    billPrompt: z
+      .object({
+        text: z.string(),
+        buttonLabel: z.string(),
+        whatsappMessage: z.string(),
+      })
+      .optional(),
     fields: z.object({
       email: z.boolean(),
       propertyType: z.boolean(),

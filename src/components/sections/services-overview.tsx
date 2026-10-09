@@ -23,7 +23,7 @@ export function ServicesOverview() {
           className="group flex min-h-48 flex-col justify-between rounded-lg bg-primary p-6 text-primary-foreground shadow-card transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           <span className="text-xl font-semibold leading-snug">
-            See all {services.length} services, including repair, AMC and site surveys
+            See all {services.length} services, including net metering and site surveys
           </span>
           <span className="inline-flex items-center gap-2 font-semibold">
             View services

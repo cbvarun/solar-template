@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Phone } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/lib/config";
 import { Button } from "@/components/ui/button";
 import { WhatsAppButton } from "@/components/whatsapp/whatsapp-button";
@@ -17,6 +17,15 @@ export function Hero() {
             {hero.headline}
           </h1>
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">{hero.subheadline}</p>
+          {hero.highlights && hero.highlights.length > 0 && (
+            <ul className="mt-5 flex flex-wrap gap-2" aria-label="What we offer">
+              {hero.highlights.map((h) => (
+                <li key={h} className="rounded-full border bg-background px-3 py-1 text-sm font-medium">
+                  {h}
+                </li>
+              ))}
+            </ul>
+          )}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">
               <Link href={hero.primaryCta.href}>{hero.primaryCta.label}</Link>
@@ -30,6 +39,21 @@ export function Hero() {
               {contact.phone}
             </a>
           </p>
+          {hero.areas && hero.areas.length > 0 && (
+            <p className="mt-3 flex items-start gap-2 text-sm text-muted-foreground">
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+              <span>
+                Serving {hero.areas.join(" · ")} and{" "}
+                {siteConfig.features.serviceAreaPages ? (
+                  <Link href="/service-areas/" className="font-medium text-foreground underline underline-offset-4">
+                    nearby areas
+                  </Link>
+                ) : (
+                  "nearby areas"
+                )}
+              </span>
+            </p>
+          )}
         </div>
 
         <Image

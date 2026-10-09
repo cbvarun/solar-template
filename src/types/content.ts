@@ -22,6 +22,19 @@ export const serviceSchema = z.object({
   related: z.array(slug),
 });
 
+export const systemSizeSchema = z.object({
+  slug,
+  kw: z.number().positive(),
+  title: z.string(),
+  seoTitle: z.string().max(70),
+  seoDescription: z.string().min(50).max(170),
+  summary: z.string().max(200),
+  intro: z.array(z.string()).min(1),
+  suits: z.array(z.string()).min(1),
+  considerations: z.array(z.string()),
+  faqs: z.array(faq).min(2),
+});
+
 export const projectSchema = z.object({
   slug,
   title: z.string(),
@@ -34,6 +47,9 @@ export const projectSchema = z.object({
   inverter: z.string(),
   installedOn: z.string(),
   estimatedMonthlySavingsInr: z.number().nonnegative().optional(),
+  /** Real monthly bills before and after solar (₹). Shown together, so set both. */
+  billBeforeInr: z.number().nonnegative().optional(),
+  billAfterInr: z.number().nonnegative().optional(),
   details: z.array(z.string()),
   image,
   gallery: z.array(image),
@@ -80,6 +96,7 @@ export const legalPageSchema = z.object({
 
 export type Faq = z.infer<typeof faq>;
 export type Service = z.infer<typeof serviceSchema>;
+export type SystemSize = z.infer<typeof systemSizeSchema>;
 export type Project = z.infer<typeof projectSchema>;
 export type Testimonial = z.infer<typeof testimonialSchema>;
 export type Location = z.infer<typeof locationSchema>;

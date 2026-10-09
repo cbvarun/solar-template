@@ -4,7 +4,7 @@ import { useId, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, Loader2, TriangleAlert } from "lucide-react";
+import { CheckCircle2, Loader2, MessageCircle, TriangleAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { TurnstileWidget } from "@/components/forms/turnstile-widget";
+import { useQuotePrefill } from "@/components/forms/quote-sheet";
 import { leadFormDefaults, leadFormSchema, type LeadFormValues } from "@/lib/validation";
 import { checkRateLimit, recordSubmission } from "@/lib/rate-limit";
 import { submitToWeb3Forms } from "@/lib/web3forms";
@@ -77,6 +78,16 @@ export function LeadFormClient({ settings, source, defaultService, defaultCity, 
   const [captchaKey, setCaptchaKey] = useState(0);
   const [wantsCaptcha, setWantsCaptcha] = useState(false);
 
+  // Only the quote sheet's form takes a prefill; inline forms on the page keep their own defaults.
+  const quotePrefill = useQuotePrefill();
+  const prefill = source === "quote-sheet" ? quotePrefill : null;
+  const initialValues = {
+    ...leadFormDefaults,
+    service: prefill?.service ?? defaultService ?? "",
+    city: defaultCity ?? "",
+    message: prefill?.message ?? leadFormDefaults.message,
+  };
+
   const {
     register,
     control,
@@ -85,7 +96,7 @@ export function LeadFormClient({ settings, source, defaultService, defaultCity, 
     formState: { errors, isSubmitting },
   } = useForm<LeadFormValues>({
     resolver: zodResolver(leadFormSchema),
-    defaultValues: { ...leadFormDefaults, service: defaultService ?? "", city: defaultCity ?? "" },
+    defaultValues: initialValues,
     mode: "onTouched",
   });
 
@@ -131,7 +142,7 @@ export function LeadFormClient({ settings, source, defaultService, defaultCity, 
       fromName: settings.fromName,
       captchaToken: captchaToken ?? undefined,
       pageUrl: typeof window !== "undefined" ? window.location.href : undefined,
-      source,
+      source: prefill?.source ?? source,
     });
 
     if (!result.ok) {
@@ -141,7 +152,7 @@ export function LeadFormClient({ settings, source, defaultService, defaultCity, 
     }
 
     recordSubmission(settings.rateLimit.windowMinutes);
-    reset({ ...leadFormDefaults, service: defaultService ?? "", city: defaultCity ?? "" });
+    reset(initialValues);
     if (settings.turnstileSiteKey) resetCaptcha();
 
     // Web3Forms ignores `redirect` for JSON requests, so we navigate client-side.
@@ -163,7 +174,18 @@ export function LeadFormClient({ settings, source, defaultService, defaultCity, 
       >
         <CheckCircle2 className="h-8 w-8 text-primary" aria-hidden="true" />
         <p className="mt-3 text-lg font-semibold">{settings.successMessage}</p>
-        <p className="mt-1 text-sm text-muted-foreground">
+        {settings.billPrompt && (
+          <div className="mt-4 rounded-md border bg-background p-4">
+            <p className="text-sm">{settings.billPrompt.text}</p>
+            <Button asChild variant="whatsapp" className="mt-3">
+              <a href={settings.billPrompt.url} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                {settings.billPrompt.buttonLabel}
+              </a>
+            </Button>
+          </div>
+        )}
+        <p className="mt-4 text-sm text-muted-foreground">
           Need us sooner? Call{" "}
           <a className="font-medium text-primary underline" href={settings.fallback.phoneHref}>
             {settings.fallback.phoneLabel}

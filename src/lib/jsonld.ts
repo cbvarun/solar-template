@@ -9,7 +9,9 @@ const abs = (path: string) => absoluteUrl(base(), path);
 const orgId = () => `${abs("/")}#business`;
 
 export function sameAsLinks(): string[] {
-  return Object.values(siteConfig.social).filter((v): v is string => Boolean(v));
+  // googleReview is a review form, not a profile of the business
+  const { googleReview: _review, ...profiles } = siteConfig.social;
+  return Object.values(profiles).filter((v): v is string => Boolean(v));
 }
 
 /**

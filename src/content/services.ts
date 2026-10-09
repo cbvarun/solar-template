@@ -54,7 +54,7 @@ export const services: Service[] = [
       { question: "Will solar work during a power cut?", answer: "A standard grid-connected system shuts down during a grid outage, for safety. If you want backup power, ask us about a hybrid system with batteries." },
       { question: "How long does installation take?", answer: "Most home systems take a few days on site. Approvals and the {{utilityName}} inspection add time afterwards, and we manage those for you." },
     ],
-    related: ["net-metering-subsidy-assistance", "annual-maintenance-contract", "site-survey-energy-audit"],
+    related: ["hybrid-solar-battery-backup", "net-metering-subsidy-assistance", "annual-maintenance-contract"],
   },
   {
     slug: "commercial-industrial-rooftop-solar",
@@ -106,6 +106,57 @@ export const services: Service[] = [
       { question: "Do you handle approvals for larger systems?", answer: "Yes. We prepare and file the documents {{utilityName}} requires and flag early any conditions that apply to your sanctioned load." },
     ],
     related: ["annual-maintenance-contract", "net-metering-subsidy-assistance", "site-survey-energy-audit"],
+  },
+  {
+    slug: "hybrid-solar-battery-backup",
+    icon: "BatteryCharging",
+    title: "Hybrid Solar with Battery Backup",
+    summary:
+      "Solar with a hybrid inverter and lithium battery, so essential loads keep running through power cuts.",
+    seoTitle: "Hybrid Solar with Battery Backup",
+    seoDescription:
+      "Hybrid rooftop solar with lithium battery backup for homes, shops and offices. Design, installation and {{utilityName}} paperwork by {{companyName}}.",
+    image: {
+      src: "/images/services/hybrid-solar-battery-backup.webp",
+      alt: "Home with rooftop solar lit up during a night storm, with battery units in the garage",
+    },
+    description: [
+      "A standard on-grid system switches off during a power cut, for the safety of line workers. A hybrid system adds a battery and a hybrid inverter, so your lights, fans, fridge, Wi-Fi and other essential loads keep running when the grid goes down.",
+      "{{companyName}} sizes the solar array to your bills and the battery to the loads you want backed up and for how long. The system still exports surplus power to the grid where {{netMeteringTerm}} allows, so you keep the savings of an on-grid system.",
+    ],
+    audience: [
+      "Homes in areas with frequent or long power cuts",
+      "Families replacing an old inverter and lead-acid battery setup",
+      "Home offices that can't afford to lose power or internet",
+      "Shops, clinics and small offices with essential daytime loads",
+      "Villas planning for higher loads, such as an EV charger",
+    ],
+    included: [
+      "Backup load study: which appliances, and for how many hours",
+      "Solar array sized to your bills, battery sized to your backup needs",
+      "Hybrid inverter and lithium (LiFePO₄) battery options",
+      "Separate backup circuit for essential loads",
+      "Structure, wiring, earthing and protection devices",
+      "{{utilityName}} paperwork and {{netMeteringTerm}} where applicable",
+      "Commissioning, app setup and a walkthrough of how the system behaves in a power cut",
+    ],
+    process: [
+      { title: "Backup and bill review", body: "We list the loads you want backed up and check your bills and roof." },
+      { title: "Design and proposal", body: "You get solar and battery sizes, expected backup hours and the trade-offs between options." },
+      { title: "Installation", body: "We install the panels, hybrid inverter, battery and backup circuit, usually in a few days." },
+      { title: "Commissioning and handover", body: "We test a simulated power cut with you and set up monitoring on your phone." },
+    ],
+    pricing: {
+      headline: "Priced to the backup you need",
+      body: "Cost depends mostly on battery capacity, so we quote after the backup load study. Your quote lists every component and warranty. Subsidies such as {{subsidyScheme}} apply to the solar part of grid-connected systems, not to batteries; we confirm what applies to your setup.",
+      ctaLabel: "Get a hybrid system quote",
+    },
+    faqs: [
+      { question: "How long will the battery run my home?", answer: "It depends on the battery size and the loads connected. We size the battery to the appliances you choose and the hours of backup you want, and show you the numbers before you decide." },
+      { question: "Can I add a battery to my existing solar system?", answer: "Often, yes. Depending on your current inverter, we either add a battery-ready inverter or a separate battery system. We check your setup first." },
+      { question: "Will a hybrid system still reduce my electricity bill?", answer: "Yes. Solar first powers your home and charges the battery, and surplus can be exported to the grid where {{netMeteringTerm}} is in place." },
+    ],
+    related: ["residential-rooftop-solar", "annual-maintenance-contract", "site-survey-energy-audit"],
   },
   {
     slug: "solar-panel-cleaning-maintenance",

@@ -34,6 +34,13 @@ Copy this into an issue or doc for each client.
 - [ ] Set `isSample: false` on real projects and testimonials. Delete the rest.
 - [ ] Verify `regional` facts: utility, regulator, net-metering wording, subsidy scheme and note
 - [ ] Check the savings estimator constants
+- [ ] `home.subsidy`: re-check the amounts on the official portal and update `checkedOn`. Confirm the company is a **registered vendor** on the portal; if not, remove the section or reword "We handle the process with you"
+- [ ] `home.packages`: sizes and points match what the client sells; remove the hybrid card if they don't offer batteries (and the `hybrid-solar-battery-backup` service)
+- [ ] `home.brands`: only brands they really install; "authorised" only where they hold that authorisation. Leave it out otherwise
+- [ ] Read `content/systems.ts` (the /solar/3-kw/ and /solar/5-kw/ pages): do the "who it suits" points fit this market?
+- [ ] `landing`: copy for the ads page `/free-solar-quote/` (noindex). Point Google/Meta ads there, not at the homepage
+- [ ] Real projects: add `billBeforeInr` and `billAfterInr` when the customer shares their bills
+- [ ] `home.hero`: the headline names the client's city; `highlights` only list what they really offer; `areas` match `locations.ts`
 - [ ] Read `content/services.ts` and `content/faqs.ts`: do pricing, warranty, timing and survey-charge statements match how this company really works?
 - [ ] Review the legal pages with a lawyer. Set the "last updated" dates.
 - [ ] Decide which `features` to switch off (e.g. `projects: false` if there are no projects yet)
@@ -67,5 +74,13 @@ Copy this into an issue or doc for each client.
 ## 7. After launch
 - [ ] Submit `/sitemap.xml` in Google Search Console
 - [ ] Claim or update the Google Business Profile. Add its URL to `social.googleBusiness`.
+- [ ] Complete the profile: primary category "Solar energy company", exact business name (no keywords), same phone/address/hours as the site, all services, service areas, 10–20 real installation photos
+- [ ] Copy the profile's "Ask for reviews" link into `social.googleReview`. Check that `/review/` opens the review form and the footer shows "Review us on Google"
 - [ ] Hand over: Cloudflare, GitHub, Web3Forms and domain-registrar access
 - [ ] Schedule a quarterly check: subsidy and tariff wording, stats, new projects and testimonials
+
+## 8. Ongoing: Google reviews (every installation)
+- [ ] After commissioning, or after the customer's first lower bill, WhatsApp them `yoursite.com/review/` with a short, polite ask. Put it as a QR code on handover documents too
+- [ ] Ask every customer, not only the happy ones. No discounts or gifts for reviews, and never write them yourselves (against Google's policy)
+- [ ] Reply to every review within a few days, especially negative ones
+- [ ] Add a few new installation photos to the profile each month
