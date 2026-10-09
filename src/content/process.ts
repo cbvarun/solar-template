@@ -1,11 +1,12 @@
 import type { ProcessStep } from "@/types/content";
 
+/** How a Smartsol installation runs, from first call to after-sales. */
 export const processSteps: ProcessStep[] = [
-  { icon: "MessagesSquare", title: "Consultation", body: "Tell us about your property and your electricity bills. We'll tell you honestly whether solar makes sense." },
-  { icon: "Search", title: "Site survey", body: "We measure the roof, check shading and structure, and review your sanctioned load." },
-  { icon: "PencilRuler", title: "Design and quote", body: "You get a layout, expected generation and an itemised written quote." },
-  { icon: "HardHat", title: "Installation", body: "Our crew installs structure, panels, inverter and wiring with safety and neat workmanship in mind." },
-  { icon: "FileCheck2", title: "{{netMeteringTerm}} and documents", body: "We prepare and follow up the {{utilityName}} paperwork, and guide you on subsidy documents where you're eligible." },
-  { icon: "PlugZap", title: "Commissioning", body: "The system goes live, and we walk you through the inverter and monitoring app." },
-  { icon: "LifeBuoy", title: "Support", body: "Cleaning, AMC and repairs from the same team that installed your system." },
+  { icon: "MessagesSquare", title: "First conversation", body: "Share your BESCOM bills and tell us about your terrace. We'll say plainly whether solar makes sense for you." },
+  { icon: "Search", title: "Terrace survey", body: "We measure the terrace, check shade from tanks and nearby buildings, and look at your sanctioned load." },
+  { icon: "PencilRuler", title: "Layout and quote", body: "You see where every panel goes, what it should generate and an itemised price." },
+  { icon: "HardHat", title: "Installation", body: "Our crew fits the structure, panels, inverter and wiring, and leaves the terrace clean." },
+  { icon: "FileCheck2", title: "BESCOM paperwork", body: "We file and follow up the net-metering application, and guide you on subsidy documents where you're eligible." },
+  { icon: "PlugZap", title: "Switch on", body: "Once the new meter is in, the system goes live and we show you the inverter and monitoring app." },
+  { icon: "LifeBuoy", title: "After-sales", body: "Cleaning, AMC and repairs from the same team that installed your system." },
 ];

@@ -10,7 +10,7 @@ export const legalPages: LegalPage[] = [
     title: "Privacy Policy",
     description:
       "How {{companyName}} collects, uses and protects the personal information you share through this website.",
-    lastUpdated: "[Update this date before launch]",
+    lastUpdated: "9 October 2026",
     intro:
       "{{legalName}} ({{companyName}}, “we”, “us”) respects your privacy. This policy explains what we collect through this website and how we use it.",
     sections: [
@@ -47,7 +47,7 @@ export const legalPages: LegalPage[] = [
     title: "Terms and Conditions",
     description:
       "The terms that apply when you use the {{companyName}} website and request quotes or services.",
-    lastUpdated: "[Update this date before launch]",
+    lastUpdated: "9 October 2026",
     intro:
       "By using this website you agree to these terms. They apply to the website operated by {{legalName}} ({{companyName}}).",
     sections: [

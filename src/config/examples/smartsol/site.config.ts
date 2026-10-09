@@ -19,7 +19,8 @@ const config: SiteConfigInput = {
     tagline: "Rooftop solar, installed right and looked after for the long run.",
     description:
       "Smartsol Systems designs, installs and maintains rooftop solar for homes, businesses and factories in Bengaluru and across Karnataka, with net-metering support and long-term service.",
-    foundedYear: 2020, // [Replace with the real year]
+    foundedYear: 2026,
+    registrationNumber: "GSTIN: 29AGBFS2442P1ZG",
     logo: { light: "/brand/logo.svg", alt: "Smartsol Systems logo", width: 180, height: 48 },
     favicon: "/brand/favicon.svg",
     ogImage: "/brand/og-default.jpg",
@@ -114,28 +115,28 @@ const config: SiteConfigInput = {
       { value: "[00]+", label: "Cities and localities served" },
     ],
     whyChooseUs: [
-      { icon: "Gauge", title: "Sized to your bills", body: "We design from your actual consumption and roof, not from a standard package." },
-      { icon: "ShieldCheck", title: "Quality components", body: "Panels, inverters and structures come with manufacturer warranty cards, and your quote lists them." },
-      { icon: "FileCheck2", title: "Paperwork handled", body: "We prepare and follow up the BESCOM net-metering file so you don't have to chase it." },
-      { icon: "BadgeIndianRupee", title: "Itemised, written quotes", body: "You see what each component costs and what warranty it carries before you decide." },
-      { icon: "Headset", title: "A local team that answers", body: "Call or WhatsApp the same team that installed your system." },
-      { icon: "CalendarCheck", title: "Care after commissioning", body: "Cleaning, AMC and repairs keep your system performing for years." },
+      { icon: "Gauge", title: "Sized from your BESCOM bills", body: "We work from a year of your bills and your actual terrace, not a standard package." },
+      { icon: "Home", title: "Planned around your terrace", body: "Water tanks, the staircase room and a usable terrace all go into the layout, with elevated structures where they help." },
+      { icon: "FileCheck2", title: "BESCOM file handled", body: "We prepare the net-metering application and follow it up through inspection and the meter change." },
+      { icon: "BadgeIndianRupee", title: "Itemised, written quotes", body: "Every component, brand and warranty is listed, so you can compare quotes like for like." },
+      { icon: "MapPin", title: "Based in South Bengaluru", body: "Our office is on Hulimavu Lake Road, so surveys and service visits across the city are quick to arrange." },
+      { icon: "CalendarCheck", title: "Here after switch-on", body: "Cleaning, AMC and repairs from the same team, including for systems other companies installed." },
     ],
     savings: {
       headline: "See what solar could save you",
       costPerUnit: 7,
       unitsPerKwPerMonth: 120,
       benefits: [
-        { title: "Lower monthly bills", body: "Every unit you generate is a unit you don't buy from the grid." },
-        { title: "Protection from tariff hikes", body: "Your solar units don't get costlier when grid tariffs rise." },
-        { title: "More energy independence", body: "Produce a good part of your own power from your own roof." },
-        { title: "Low upkeep", body: "Periodic cleaning and a yearly check keep output healthy." },
+        { title: "Smaller BESCOM bills", body: "Every unit your terrace generates is a unit you don't buy at your tariff slab." },
+        { title: "Less exposure to tariff revisions", body: "When KERC revises tariffs, the power you make yourself doesn't get dearer." },
+        { title: "A use for idle terrace space", body: "The terrace that only holds a water tank can pay for itself, and still be used underneath with an elevated structure." },
+        { title: "Steady output in Bengaluru's climate", body: "Mild temperatures mean panels lose less to heat than in hotter cities; output dips mainly in the cloudy monsoon months." },
       ],
     },
     subsidy: {
       headline: "{{subsidyScheme}} subsidy for home solar",
       intro:
-        "Homes installing rooftop solar can get central financial assistance, paid into your bank account after the system is installed and inspected. We take you through the process, from portal registration to the claim.",
+        "Bengaluru homes installing rooftop solar can get central financial assistance, paid into your bank account once the system is installed, the BESCOM meter is changed and the inspection is done. We take you through each step.",
       tiers: [
         { amount: "₹30,000", label: "per kW, for the first 2 kW" },
         { amount: "₹18,000", label: "for the 3rd kW" },
@@ -145,12 +146,12 @@ const config: SiteConfigInput = {
         "For individual homes. Housing societies and RWAs can get ₹18,000 per kW for common facilities such as lifts, pumps and EV charging.",
       checkedOn: "checked October 2026", // [Re-check the amounts on the portal before launch and every few months]
       sourceUrl: "https://pmsuryaghar.gov.in/",
-      helpHeadline: "We handle the process with you",
+      helpHeadline: "How we help with the subsidy",
       helpItems: [
-        "Site survey and the right system size for your bills",
+        "A terrace survey and the right size for your BESCOM bills",
         "Registration on the national rooftop solar portal",
-        "{{utilityName}} feasibility approval and {{netMeteringTerm}} paperwork",
-        "Installation, commissioning and inspection",
+        "BESCOM feasibility approval and net-metering paperwork",
+        "Installation, meter change and inspection",
         "Guidance on the subsidy claim and documents",
       ],
       ctaLabel: "Check my subsidy eligibility",
@@ -161,60 +162,62 @@ const config: SiteConfigInput = {
     },
     packages: {
       headline: "Popular rooftop solar systems",
-      intro: "Typical sizes for homes and small businesses. We confirm the right size for your roof and bills at the site survey.",
+      intro: "Typical sizes for Bengaluru homes and businesses. We confirm the right size from your bills and terrace at the survey.",
       items: [
         {
           name: "3 kW",
           kw: 3,
-          tagline: "For small and medium homes",
-          points: ["Needs about 300 sq ft of shade-free roof", "Panels, inverter, structure and installation", "{{utilityName}} {{netMeteringTerm}} paperwork", "Subsidy application support"],
+          tagline: "For independent houses with moderate bills",
+          points: ["About 300 sq ft of shade-free terrace", "Fits around most water tanks and staircase rooms", "BESCOM net-metering file included", "Help with the full home subsidy"],
           ctaLabel: "Get a 3 kW quote",
           service: "residential-rooftop-solar",
         },
         {
           name: "5 kW",
           kw: 5,
-          tagline: "For larger homes and higher bills",
-          points: ["Needs about 500 sq ft of shade-free roof", "Panels, inverter, structure and installation", "{{utilityName}} {{netMeteringTerm}} paperwork", "Subsidy application support"],
+          tagline: "For villas and homes with several ACs",
+          points: ["About 500 sq ft of shade-free terrace", "Room to add an EV charger later", "BESCOM load and phase check included", "Help with the home subsidy"],
           ctaLabel: "Get a 5 kW quote",
           service: "residential-rooftop-solar",
         },
         {
           name: "6 kW and above",
-          tagline: "For villas, shops and high consumption",
-          points: ["Designed around your roof and load", "Three-phase systems where your connection needs it", "Commercial and industrial sizes on request"],
+          tagline: "For large homes, shops and offices",
+          points: ["Designed around your load and roof", "Three-phase systems where BESCOM requires them", "Factory and commercial sizes on request"],
           ctaLabel: "Get a custom quote",
           service: "residential-rooftop-solar",
         },
         {
           name: "Hybrid + battery",
-          tagline: "Keep the power on during cuts",
-          points: ["Hybrid inverter and lithium battery", "Backup for the essential loads you choose", "Surplus still exported where {{netMeteringTerm}} allows"],
+          tagline: "For areas with summer power cuts",
+          points: ["Hybrid inverter and lithium battery", "Replaces an old inverter and lead-acid batteries", "Surplus still exported to BESCOM"],
           ctaLabel: "Get a hybrid quote",
           service: "hybrid-solar-battery-backup",
         },
       ],
-      footnote: "No fixed prices: cost depends on your roof, structure height and the equipment you choose. Every quote is itemised.",
+      footnote: "No fixed prices: cost depends on your terrace, how high the structure needs to be and the brands you choose. Every quote is itemised.",
     },
-    // brands: {
-    //   headline: "Equipment we install",
-    //   groups: [
-    //     { label: "Panels", items: [{ name: "[Brand]", logo: "/images/brands/[brand].svg" }] },
-    //     { label: "Inverters", items: [{ name: "[Brand]" }] },
-    //     { label: "Batteries", items: [{ name: "[Brand]" }] },
-    //   ],
-    // },
+    brands: {
+      headline: "Brands we install",
+      intro: "Equipment from established makers, chosen for your terrace, budget and backup needs. Your quote names the exact models.",
+      groups: [
+        {
+          label: "Solar, inverters and electrical",
+          items: [{ name: "TATA" }, { name: "Crompton" }, { name: "Panasonic" }, { name: "Deye" }, { name: "Growatt" }, { name: "GoodWe" }, { name: "L&T" }, { name: "Havells" }, { name: "Anchor" }, { name: "Polycab" }],
+        },
+      ],
+    },
   },
 
   landing: {
-    headline: "Get a free rooftop solar quote in {{city}}",
+    headline: "Get a free rooftop solar quote in Bengaluru",
     subheadline:
-      "Tell us about your home or business. We size the system from your {{utilityName}} bill and show what the {{subsidyScheme}} subsidy covers.",
+      "Tell us about your home or business. We size the system from your BESCOM bill and terrace, and show what the {{subsidyScheme}} subsidy covers.",
     bullets: [
-      "System sized to your bills and roof, not a standard package",
-      "Subsidy and {{utilityName}} {{netMeteringTerm}} paperwork handled",
+      "Layout planned around your water tank and staircase room",
+      "BESCOM net-metering and subsidy paperwork handled",
       "On-grid and hybrid systems with battery backup",
-      "Itemised, written quote with every component and warranty",
+      "Itemised, written quote from a South Bengaluru team",
     ],
   },
 
@@ -222,7 +225,7 @@ const config: SiteConfigInput = {
     story: [
       "Smartsol Systems is a Bengaluru-based rooftop solar company working from Hulimavu, serving homes, businesses and industries across Karnataka.",
       "We design each system from the customer's own bills and roof, handle the BESCOM paperwork ourselves, and stay available after commissioning.",
-      "[Add your founding story: who started the company, why, and what you learned from your first installations.]",
+      "Smartsol Systems was set up in 2026 to make rooftop solar simple and dependable for families and businesses in Bengaluru. We work with established brands such as TATA, Panasonic, Havells and Polycab, and one team takes each project from the first terrace survey to switch-on and long-term service.",
     ],
     mission: "To make dependable solar power practical for every rooftop we work on.",
     values: [
@@ -231,7 +234,7 @@ const config: SiteConfigInput = {
       { title: "Clear paperwork", body: "Written quotes, warranty cards and approval status you can follow." },
       { title: "Long-term care", body: "A solar system is a long-term asset, and we plan service accordingly." },
     ],
-    certifications: [{ name: "[Add certification or empanelment, e.g. DISCOM or state agency approvals]" }],
+    certifications: [], // Add real certifications or approvals, e.g. { name: "MNRE empanelled" }
     philosophy:
       "Solar is a long-term asset. We choose equipment, structures and wiring with the long term in mind, and we tell customers plainly what they need and what they don't.",
   },
@@ -267,7 +270,8 @@ const config: SiteConfigInput = {
     captcha: { provider: "turnstile" },
   },
 
-  features: defaultFeatures,
+  // Hidden until real numbers, reviews and projects are available. Set to true to show.
+  features: { ...defaultFeatures, trustStats: false, testimonials: false, projects: false },
 };
 
 export default config;

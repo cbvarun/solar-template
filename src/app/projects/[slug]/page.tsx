@@ -12,7 +12,8 @@ import { TriangleAlert } from "lucide-react";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return siteConfig.features.projects ? getProjects().map((p) => ({ slug: p.slug })) : [];
+  // Static export needs at least one path. With projects switched off, these pages render the 404 page.
+  return getProjects().map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -118,7 +119,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 ))}
               </div>
             )}
-            {project.testimonial && (
+            {siteConfig.features.testimonials && project.testimonial && (
               <figure className="rounded-lg border-l-4 border-secondary bg-muted/60 p-6">
                 <blockquote className="text-lg">“{project.testimonial.quote}”</blockquote>
                 <figcaption className="mt-3 text-sm text-muted-foreground">

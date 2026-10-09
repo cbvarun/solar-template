@@ -8,7 +8,7 @@ export function BrandsSection() {
 
   return (
     <Section id="brands" title={t(brands.headline)} intro={brands.intro && t(brands.intro)}>
-      <div className="grid gap-8 md:grid-cols-3">
+      <div className={brands.groups.length > 1 ? "grid gap-8 md:grid-cols-3" : "grid gap-8"}>
         {brands.groups.map((group) => (
           <div key={group.label}>
             <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">{group.label}</h3>

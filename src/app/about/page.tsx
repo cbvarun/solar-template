@@ -48,10 +48,12 @@ export default function AboutPage() {
 
       <Section title="How we work">
         <p className="max-w-3xl text-lg leading-relaxed">{t(about.philosophy)}</p>
-        <div className="mt-8">
-          <h3 className="mb-3 text-lg font-semibold">Certifications and approvals</h3>
-          <TrustBadges />
-        </div>
+        {about.certifications.length > 0 && (
+          <div className="mt-8">
+            <h3 className="mb-3 text-lg font-semibold">Certifications and approvals</h3>
+            <TrustBadges />
+          </div>
+        )}
       </Section>
 
       <CTASection headline="Talk to the team" body="Book a consultation and we'll tell you honestly whether solar suits your roof and your bills." />
