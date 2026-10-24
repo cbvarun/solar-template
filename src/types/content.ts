@@ -85,6 +85,37 @@ export const processStepSchema = z.object({ icon: z.string(), title: z.string(),
 
 export const faqGroupSchema = z.object({ id: slug, title: z.string(), faqs: z.array(faq).min(1) });
 
+/** A how-to article (/guides/<slug>/). Each section renders its heading, then paragraphs, list, table and note, in that order. */
+export const guideSchema = z.object({
+  slug,
+  title: z.string(),
+  seoTitle: z.string().max(70),
+  seoDescription: z.string().min(50).max(170),
+  summary: z.string().max(220),
+  /** ISO dates (YYYY-MM-DD). */
+  published: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  sections: z
+    .array(
+      z.object({
+        heading: z.string(),
+        body: z.array(z.string()).default([]),
+        list: z.array(z.string()).optional(),
+        ordered: z.boolean().optional(),
+        table: z.object({ head: z.array(z.string()), rows: z.array(z.array(z.string())) }).optional(),
+        note: z.string().optional(),
+      }),
+    )
+    .min(1),
+  faqs: z.array(faq).default([]),
+  /** Where the facts come from. Shown at the end of the article. Required for anything with figures or rules. */
+  sources: z.array(z.object({ label: z.string(), url: z.string().url() })).default([]),
+  /** Service slugs to link from the article. */
+  related: z.array(slug).default([]),
+  /** Other guides to link from the article. */
+  relatedGuides: z.array(slug).default([]),
+});
+
 export const legalPageSchema = z.object({
   slug: z.enum(["privacy-policy", "terms"]),
   title: z.string(),
@@ -103,3 +134,6 @@ export type Location = z.infer<typeof locationSchema>;
 export type ProcessStep = z.infer<typeof processStepSchema>;
 export type FaqGroup = z.infer<typeof faqGroupSchema>;
 export type LegalPage = z.infer<typeof legalPageSchema>;
+export type Guide = z.infer<typeof guideSchema>;
+/** Authoring type for content/guides.ts (fields with defaults are optional). */
+export type GuideInput = z.input<typeof guideSchema>;

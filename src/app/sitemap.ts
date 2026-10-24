@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/config";
-import { getLocations, getProjects, getServices, getSystems } from "@/lib/content";
+import { getGuides, getLocations, getProjects, getServices, getSystems } from "@/lib/content";
 import { absoluteUrl } from "@/lib/utils";
 
 export const dynamic = "force-static";
@@ -31,6 +31,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       : []),
     ...(f.serviceAreaPages
       ? [entry("/service-areas/", 0.7), ...getLocations().map((l) => entry(`/service-areas/${l.slug}/`, 0.7))]
+      : []),
+    ...(getGuides().length
+      ? [entry("/guides/", 0.6, "weekly"), ...getGuides().map((g) => entry(`/guides/${g.slug}/`, 0.6))]
       : []),
     entry("/contact/", 0.8),
     entry("/faqs/", 0.6),

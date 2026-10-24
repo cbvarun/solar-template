@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/config";
+import { getGuides } from "@/lib/content";
 
 type NavItem = SiteNav["main"][number];
 type SiteNav = typeof siteConfig.navigation;
@@ -8,6 +9,7 @@ function enabled(href: string): boolean {
   const f = siteConfig.features;
   if (href.startsWith("/projects") && !f.projects) return false;
   if (href.startsWith("/service-areas") && !f.serviceAreaPages) return false;
+  if (href.startsWith("/guides") && getGuides().length === 0) return false;
   return true;
 }
 

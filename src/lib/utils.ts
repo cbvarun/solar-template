@@ -32,3 +32,13 @@ export function absoluteUrl(base: string, path = "/"): string {
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
   return `${cleanBase}${cleanPath}`;
 }
+
+/** "2026-10-24" -> "24 October 2026" (fixed to India time, so builds anywhere give the same text). */
+export function formatGuideDate(iso: string): string {
+  return new Date(`${iso}T00:00:00+05:30`).toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "Asia/Kolkata",
+  });
+}

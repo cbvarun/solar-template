@@ -4,6 +4,7 @@ import { formatINR } from "@/lib/utils";
 import { systemFacts } from "@/lib/subsidy";
 import { services as rawServices } from "@/content/services";
 import { systems as rawSystems } from "@/content/systems";
+import { guides as rawGuides } from "@/content/guides";
 import { projects as rawProjects } from "@/content/projects";
 import { locations as rawLocations } from "@/content/locations";
 import { testimonials as rawTestimonials } from "@/content/testimonials";
@@ -13,6 +14,7 @@ import { legalPages as rawLegal } from "@/content/legal";
 import {
   serviceSchema,
   systemSizeSchema,
+  guideSchema,
   projectSchema,
   locationSchema,
   testimonialSchema,
@@ -21,6 +23,7 @@ import {
   legalPageSchema,
   type Service,
   type SystemSize,
+  type Guide,
   type Project,
   type Location,
   type Testimonial,
@@ -101,11 +104,17 @@ const locations: Location[] = load("locations.ts", z.array(locationSchema), rawL
 assertUnique("services", services.map((s) => s.slug));
 assertUnique("projects", projects.map((p) => p.slug));
 assertUnique("systems", systems.map((s) => s.slug));
+const guides: Guide[] = resolveDeep(load("guides.ts", z.array(guideSchema), rawGuides)).sort((a, b) =>
+  b.published.localeCompare(a.published),
+);
+assertUnique("guides", guides.map((g) => g.slug));
+assertRefs("guides.relatedGuides", guides.flatMap((g) => g.relatedGuides), new Set(guides.map((g) => g.slug)));
 assertUnique("locations", locations.map((l) => l.slug));
 
 const serviceSlugs = new Set(services.map((s) => s.slug));
 const locationSlugs = new Set(locations.map((l) => l.slug));
 assertRefs("services.related", services.flatMap((s) => s.related), serviceSlugs);
+assertRefs("guides.related", guides.flatMap((g) => g.related), serviceSlugs);
 assertRefs("locations.nearby", locations.flatMap((l) => l.nearby), locationSlugs);
 assertRefs(
   "testimonials.serviceSlug",
@@ -140,6 +149,11 @@ export const getServiceOptions = (): string[] => [...services.map((s) => s.title
 export const getSystems = (): SystemSize[] => systems;
 export const getSystemBySlug = (slug: string): SystemSize | undefined => systems.find((s) => s.slug === slug);
 export const getSystemByKw = (kw: number): SystemSize | undefined => systems.find((s) => s.kw === kw);
+
+// ---------- guides ----------
+
+export const getGuides = (): Guide[] => guides;
+export const getGuideBySlug = (slug: string): Guide | undefined => guides.find((g) => g.slug === slug);
 
 // ---------- projects ----------
 

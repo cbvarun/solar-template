@@ -1,7 +1,7 @@
 import { siteConfig, t } from "@/lib/config";
 import { getRealTestimonials } from "@/lib/content";
 import { absoluteUrl } from "@/lib/utils";
-import type { Faq, Service } from "@/types/content";
+import type { Faq, Guide, Service } from "@/types/content";
 
 const base = () => siteConfig.seo.siteUrl;
 const abs = (path: string) => absoluteUrl(base(), path);
@@ -83,6 +83,21 @@ export function serviceJsonLd(service: Service) {
     url: abs(`/services/${service.slug}/`),
     provider: { "@id": orgId() },
     areaServed: siteConfig.serviceAreas.primaryCities.map((name) => ({ "@type": "City", name })),
+  };
+}
+
+export function articleJsonLd(guide: Guide) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: guide.title,
+    description: guide.seoDescription,
+    datePublished: guide.published,
+    dateModified: guide.updated,
+    url: abs(`/guides/${guide.slug}/`),
+    mainEntityOfPage: abs(`/guides/${guide.slug}/`),
+    author: { "@id": orgId() },
+    publisher: { "@id": orgId() },
   };
 }
 
