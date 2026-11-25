@@ -42,8 +42,7 @@ export const faqGroups: FaqGroup[] = [
     id: "maintenance",
     title: "Maintenance",
     faqs: [
-      { question: "Does solar need maintenance?", answer: "Very little, but not none. In Bengaluru, dust and bird droppings are the main reason output drops, so regular cleaning matters. A yearly electrical check before the monsoon is also worthwhile." },
-      { question: "How often should I clean my panels?", answer: "Every few weeks in the dry months, from about January to May, and more often near busy roads or construction. During the monsoon, rain helps, but droppings still need removing." },
+      { question: "Does solar need maintenance?", answer: "Very little, but not none. A yearly electrical and earthing check before the monsoon keeps the system safe, and watching generation in the monitoring app shows early if anything is wrong. Our AMC plans cover both." },
       { question: "What should I do if the inverter shows an error?", answer: "Note the fault code, take a photo of the display or app, and call or WhatsApp us. Please don't open the inverter or isolators yourself." },
     ],
   },

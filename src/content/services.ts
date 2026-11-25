@@ -161,53 +161,6 @@ export const services: Service[] = [
     related: ["residential-rooftop-solar", "annual-maintenance-contract", "site-survey-energy-audit"],
   },
   {
-    slug: "solar-panel-cleaning-maintenance",
-    icon: "Droplets",
-    title: "Solar Panel Cleaning and Maintenance",
-    summary: "Scheduled panel cleaning for Bengaluru's dust, construction grime and pigeon droppings, with a health check each visit.",
-    seoTitle: "Solar Panel Cleaning in Bengaluru",
-    seoDescription:
-      "Professional solar panel cleaning in Bengaluru: dust, construction grime and bird droppings removed safely, with a quick system health check on every visit.",
-    image: {
-      src: "/images/services/solar-panel-cleaning-maintenance.webp",
-      alt: "Long-handled brush washing dust off wet solar panels",
-    },
-    description: [
-      "Bengaluru's dry months coat panels quickly. Road dust, construction work nearby and pigeon droppings can cut generation noticeably long before the panels look dirty from the ground.",
-      "Our team cleans with soft brushes and water, never abrasive tools or harsh detergents that damage the glass coating. Each visit includes a quick check of the inverter, wiring and generation, so small problems are caught early.",
-    ],
-    audience: [
-      "Homes whose generation has dropped since installation",
-      "Terraces near main roads or construction sites",
-      "Apartment and commercial rooftops that are hard to reach",
-      "Owners who'd rather not climb onto the terrace edge themselves",
-    ],
-    included: [
-      "Soft-brush and water cleaning of every panel",
-      "Removal of bird droppings and nesting material",
-      "Visual check of panels, cables, connectors and structure",
-      "Inverter status and fault-log check",
-      "Before-and-after generation note",
-      "Advice on a cleaning schedule for your location",
-    ],
-    process: [
-      { title: "Book a visit", body: "Tell us the system size and where the terrace is. We confirm a slot." },
-      { title: "Clean and inspect", body: "We clean the panels and check the system while we're on the roof." },
-      { title: "Report", body: "You get a short note on what we found and anything that needs attention." },
-    ],
-    pricing: {
-      headline: "One visit or a schedule",
-      body: "Charges depend on the number of panels, terrace height and access. Book a single clean, or a schedule that suits Bengaluru's dry season. Cleaning is also part of our AMC plans.",
-      ctaLabel: "Book a cleaning visit",
-    },
-    faqs: [
-      { question: "How often should panels be cleaned in Bengaluru?", answer: "In the dry months, from about January to May, every few weeks makes a visible difference, especially near busy roads. During the monsoon, rain does part of the job, but bird droppings still need removing." },
-      { question: "Can I clean the panels myself?", answer: "You can rinse them with plain water early in the morning, when the glass is cool. Don't use detergents, scrubbers or high-pressure jets, and don't stand on the panels." },
-      { question: "Do you clean systems installed by other companies?", answer: "Yes. We clean any make of system, and tell you if we notice a fault." },
-    ],
-    related: ["annual-maintenance-contract", "solar-repair-troubleshooting"],
-  },
-  {
     slug: "solar-repair-troubleshooting",
     icon: "Wrench",
     title: "Solar Repair and Troubleshooting",
@@ -254,23 +207,23 @@ export const services: Service[] = [
       { question: "Can you repair a system another company installed?", answer: "Yes. We work on all common inverter and panel brands." },
       { question: "Rats chewed our solar cables. Can you fix it?", answer: "Yes. We replace the damaged cable, route it through protective conduit and check that nothing else was affected." },
     ],
-    related: ["annual-maintenance-contract", "solar-panel-cleaning-maintenance"],
+    related: ["annual-maintenance-contract", "hybrid-solar-battery-backup"],
   },
   {
     slug: "annual-maintenance-contract",
     icon: "CalendarCheck",
     title: "Annual Maintenance Contract (AMC)",
-    summary: "Scheduled cleaning, inspections and generation reports for Bengaluru homes, apartments and businesses, with priority support.",
+    summary: "Scheduled inspections, electrical checks and generation reports for Bengaluru homes, apartments and businesses, with priority support.",
     seoTitle: "Solar AMC in Bengaluru",
     seoDescription:
-      "Solar annual maintenance contracts in Bengaluru for homes, apartment associations and businesses: scheduled cleaning, inspections, reports and priority support.",
+      "Solar annual maintenance contracts in Bengaluru for homes, apartment associations and businesses: scheduled inspections, electrical checks, reports and priority support.",
     image: {
       src: "/images/services/annual-maintenance-contract.webp",
       alt: "Technician in a yellow hard hat checking panels on a large rooftop array",
     },
     description: [
       "An AMC turns maintenance into a routine instead of a reaction. For apartment associations and businesses it also means one point of contact and a record of every visit, which helps when the committee or management changes.",
-      "Each plan is built around your system size and Bengaluru's seasons: more cleaning in the dusty months, an electrical check before the monsoon, and generation reviews in between.",
+      "Each plan is built around your system size and Bengaluru's seasons: an electrical and earthing check before the monsoon, regular generation reviews, and a quick response if output drops or the inverter shows a fault.",
     ],
     audience: [
       "Homes that want maintenance taken care of",
@@ -279,8 +232,8 @@ export const services: Service[] = [
       "Owners whose original installer no longer offers service",
     ],
     included: [
-      "Scheduled panel cleaning, more often in the dry season",
       "Pre-monsoon electrical and earthing inspection",
+      "Panel, cable and connector inspection for damage or loose fittings",
       "Structure, fastener and bird-mesh check",
       "Inverter and monitoring review",
       "Generation reports so you can track performance",
@@ -288,7 +241,7 @@ export const services: Service[] = [
     ],
     process: [
       { title: "System review", body: "We inspect your system and agree the visit schedule." },
-      { title: "Scheduled visits", body: "Cleaning and inspections happen on the agreed dates, with a note after each one." },
+      { title: "Scheduled visits", body: "Inspections and checks happen on the agreed dates, with a note after each one." },
       { title: "Reports and support", body: "You get regular generation reports and priority help when something goes wrong." },
     ],
     pricing: {
@@ -301,7 +254,7 @@ export const services: Service[] = [
       { question: "Can an apartment association take an AMC?", answer: "Yes. We work with association committees and keep a visit record they can share with residents." },
       { question: "Can I get an AMC for a system you didn't install?", answer: "Yes, after an initial inspection to check the system's condition." },
     ],
-    related: ["solar-panel-cleaning-maintenance", "solar-repair-troubleshooting"],
+    related: ["solar-repair-troubleshooting", "hybrid-solar-battery-backup"],
   },
   {
     slug: "net-metering-subsidy-assistance",

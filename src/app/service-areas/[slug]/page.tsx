@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!loc) return {};
   return buildMetadata({
     title: `Rooftop Solar in ${loc.name}`,
-    description: `Rooftop solar installation, cleaning, maintenance and net-metering support in ${loc.name}, ${loc.state}. Get a quote from ${siteConfig.company.name}.`,
+    description: `Rooftop solar installation, maintenance and net-metering support in ${loc.name}, ${loc.state}. Get a quote from ${siteConfig.company.name}.`,
     path: `/service-areas/${loc.slug}/`,
   });
 }

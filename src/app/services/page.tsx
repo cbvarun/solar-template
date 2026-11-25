@@ -8,7 +8,7 @@ import { CTASection } from "@/components/sections/cta-section";
 export const metadata = buildMetadata({
   title: "Rooftop Solar Services",
   description:
-    "Residential and commercial rooftop solar installation, panel cleaning, repair, AMC, net-metering assistance and site surveys.",
+    "Residential and commercial rooftop solar installation, hybrid battery backup, repair, AMC, net-metering assistance and site surveys.",
   path: "/services/",
 });
 

@@ -8,5 +8,5 @@ export const processSteps: ProcessStep[] = [
   { icon: "HardHat", title: "Installation", body: "Our crew fits the structure, panels, inverter and wiring, and leaves the terrace clean." },
   { icon: "FileCheck2", title: "BESCOM paperwork", body: "We file and follow up the net-metering application, and guide you on subsidy documents where you're eligible." },
   { icon: "PlugZap", title: "Switch on", body: "Once the new meter is in, the system goes live and we show you the inverter and monitoring app." },
-  { icon: "LifeBuoy", title: "After-sales", body: "Cleaning, AMC and repairs from the same team that installed your system." },
+  { icon: "LifeBuoy", title: "After-sales", body: "AMC and repairs from the same team that installed your system." },
 ];

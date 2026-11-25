@@ -120,7 +120,7 @@ const config: SiteConfigInput = {
       { icon: "FileCheck2", title: "BESCOM file handled", body: "We prepare the net-metering application and follow it up through inspection and the meter change." },
       { icon: "BadgeIndianRupee", title: "Itemised, written quotes", body: "Every component, brand and warranty is listed, so you can compare quotes like for like." },
       { icon: "MapPin", title: "Based in South Bengaluru", body: "Our office is on Hulimavu Lake Road, so surveys and service visits across the city are quick to arrange." },
-      { icon: "CalendarCheck", title: "Here after switch-on", body: "Cleaning, AMC and repairs from the same team, including for systems other companies installed." },
+      { icon: "CalendarCheck", title: "Here after switch-on", body: "AMC and repairs from the same team, including for systems other companies installed." },
     ],
     savings: {
       headline: "See what solar could save you",
